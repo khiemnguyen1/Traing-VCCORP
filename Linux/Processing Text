@@ -293,4 +293,43 @@ Các tùy chọn khác là:
 -s( --only-delimited) – Theo mặc định cut in các dòng không chứa ký tự phân cách. Khi tùy chọn này được sử dụng, cut không in các dòng không chứa dấu phân cách.
 --output-delimiter– Hành vi mặc định của cut là sử dụng dấu phân cách đầu vào làm dấu phân cách đầu ra. Tùy chọn này cho phép bạn chỉ định một chuỗi dấu phân cách đầu ra khác.
 
+5. wc command
 
+Lệnh wc (word count) trong các hệ điều hành Unix/ Linux được sử dụng để đếm số dòng mới, đếm số từ, đếm byte và ký tự trong một tệp được chỉ định bởi các file arguments. Cú pháp của lệnh wc như dưới đây.
+
+# wc [options] filenames
+
+Sau đây là các tùy chọn và cách sử dụng được cung cấp bởi lệnh.
+
+wc -l: prints số dòng trong một file.
+
+wc -w: prints số từ trong một file.
+
+wc -c: hiển thị số bytes trong một file.
+
+wc -m: prints số kí tự trong một file.
+
+wc -L: prints độ dài của dòng dài nhất trong một file.
+
+III. Using ‘grep’, ‘sed’, ‘awk'. Đây là các lệnh phức tạp, chỉ cần nắm cách dùng cơ bản.
+
+1. Grep command
+
+Đây là cách sử dụng cơ bản và hay gặp nhất, nếu đơn gỉan bạn muốn tìm một chuỗi nào đó trong chỉ một file duy nhất thì có thể dùng theo cú pháp sau :
+
+$ grep "chuoi" ten_file
+
+Kết qủa sẽ hiển thị ngay trên màn hình command line theo dòng nào có chứa chuỗi sẽ hiển thị cả dòng trong file đó ra và chuỗi đó sẽ được highlight.
+
+2. sed command
+
+Linux SED command là công cụ mạnh để giúp parse và transform text, nó cơ bản là một trình biên soạn văn bản để chỉnh sửa dữ liệu từ một file nguồn vào chuẩn, và có khả năng chỉnh sửa theo từng dòng một không cần tương tác. SED chạy được trên hầu hết các hệ điều hành lớn. Cú pháp và tính năng của SED chủ yếu giống với ed editor.
+
+3. awk command 
+
+AWK là một ngôn ngữ lập trình thông dịch. Nó rất mạnh mẽ và được thiết kế đặc biệt để xử lý văn bản. Nó được đặt tên bằng cách viết tắt các chữ cái đầu tiên của các tác giả: Aho, Weinberger và Kernighan. Sử dụng điển hình của AWK:
+
+Xử lý văn bản
+Tạo báo cáo văn bản được định dạng
+Thực hiện các phép toán số học
+Tìm kiếm text trong file
