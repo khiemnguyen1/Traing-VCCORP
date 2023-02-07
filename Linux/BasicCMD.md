@@ -34,12 +34,12 @@ Có nhiều phiên bản để dùng với lệnh ls như sau:
 cat là một trong các lệnh cơ bản trong Linux được sử dụng thường xuyên nhất trong Linux. Nó được dùng để xem nội dung file trên output tiêu chuẩn (stdout). Để chạy lệnh này, gõ cat theo sau là tên file và phần mở rộng. Ví dụ: cat file.txt.
 Có nhiều cách để sử dụng cat command linux:
 cat > filename tạo ra file mới cat filename1 filename2>filename3 nhập 2 files (1 và 2) để lưu kết quả vào file (3) để chuyển một file từ in thường tới in hoa hoặc ngược lại, cat filename | tr a-z A-Z >output.txt
+
 5. cp
 
+Sử dụng command cp để sao chép files từ thư mục hiện tại. Chẳng hạn, command cp scenery.jpg /home/username/Pictures sẽ tạo bản copy của scenery.jpg vào danh mục Pictures.
 
-Sử dụng command cp để sao chép files từ thư mục hiện tại. Chẳng hạn, command cp scenery.jpg /home/username/Pictures sẽ tạo bản copy của scenery.jpg vào danh mục Pictures.
 6. mv
-
 
 Công dụng chính của command mv là di chuyển files, dù nó cũng có thể được dùng để đổi tên files.
 Arguments trong command này tương tự như command cp. Bạn cần nhập mv, tên file và điểm đến của thư mục. Ví dụ: mv file.txt /home/username/Documents
