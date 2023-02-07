@@ -1,4 +1,4 @@
-Xử lý text bằng filter trong Linux
+I. Xử lý text bằng filter trong Linux
 1. Lệnh combine file
 CAT
 
@@ -76,3 +76,221 @@ Mặc định join dùng field đầu tiên làm key để ghép 2 file lại v�
 Lệnh paste dùng để nối dòng với dòng, cách nhau bởi TAB, và không gộp chung key như join.
 
 $ paste list1.txt list2.txt
+4. Tac command
+
+lệnh tac trong Linux được sử dụng để nối và in các tệp ngược lại. Lệnh này sẽ ghi từng TẬP TIN vào đầu ra tiêu chuẩn, dòng cuối cùng trước. Khi không có tệp nào được chỉ định thì lệnh này sẽ đọc đầu vào tiêu chuẩn.
+
+Cú pháp:
+
+tac [TÙY CHỌN]... [TỆP]...
+- tac -b: Tùy chọn này đính kèm dấu phân cách trước thay vì sau
+- tac -r: Tùy chọn này sẽ diễn giải dấu tách thành một biểu thức chính quy
+- tac -s : Tùy chọn này sử dụng CHUỖI làm dấu phân cách thay vì dòng mới.
+
+5. Sort command
+
+Lệnh SORT được sử dụng để sắp xếp một tệp, sắp xếp các bản ghi theo một thứ tự cụ thể. Theo mặc định, lệnh sắp xếp sẽ sắp xếp tệp giả sử nội dung là ASCII. Sử dụng các tùy chọn trong lệnh sắp xếp cũng có thể được sử dụng để sắp xếp theo số. 
+
+Lệnh SORT sắp xếp nội dung của tệp văn bản, từng dòng một.
+sort là một chương trình dòng lệnh tiêu chuẩn in các dòng đầu vào của nó hoặc nối tất cả các tệp được liệt kê trong danh sách đối số của nó theo thứ tự được sắp xếp.
+Lệnh sắp xếp là một tiện ích dòng lệnh để sắp xếp các dòng của tệp văn bản. Nó hỗ trợ sắp xếp theo thứ tự bảng chữ cái, theo thứ tự ngược lại, theo số, theo tháng và cũng có thể loại bỏ các mục trùng lặp.
+Lệnh sắp xếp cũng có thể sắp xếp theo các mục không ở đầu dòng, bỏ qua phân biệt chữ hoa chữ thường và trả về xem tệp có được sắp xếp hay không. Việc sắp xếp được thực hiện dựa trên một hoặc nhiều phím sắp xếp được trích xuất từ ​​mỗi dòng đầu vào.
+Theo mặc định, toàn bộ đầu vào được lấy làm khóa sắp xếp. Khoảng trống là dấu tách trường mặc định.
+Lệnh sắp xếp tuân theo các tính năng này như được nêu dưới đây:  
+
+Các dòng bắt đầu bằng một số sẽ xuất hiện trước các dòng bắt đầu bằng một chữ cái.
+Các dòng bắt đầu bằng một chữ cái xuất hiện sớm hơn trong bảng chữ cái sẽ xuất hiện trước các dòng bắt đầu bằng một chữ cái xuất hiện sau trong bảng chữ cái.
+Các dòng bắt đầu bằng một chữ cái in hoa sẽ xuất hiện trước các dòng bắt đầu bằng cùng một chữ cái viết thường.
+-o: Unix cũng cung cấp cho chúng ta các tiện ích đặc biệt như nếu bạn muốn ghi đầu ra vào một tệp mới , output.txt, hãy chuyển hướng đầu ra như thế này hoặc bạn cũng có thể sử dụng tùy chọn sắp xếp có sẵn -o, tùy chọn này cho phép bạn chỉ định một tập tin đầu ra. 
+
+Sử dụng tùy chọn -o về mặt chức năng giống như chuyển hướng đầu ra sang một tệp.
+-r: Sắp xếp theo thứ tự đảo ngược : Bạn có thể thực hiện sắp xếp theo thứ tự đảo ngược bằng cách sử dụng cờ -r. cờ -r là một tùy chọn của lệnh sắp xếp sắp xếp tệp đầu vào theo thứ tự ngược lại, tức là thứ tự giảm dần theo mặc định. 
+-n : Để sắp xếp tệp theo số lượng , hãy sử dụng tùy chọn –n. Tùy chọn -n cũng được xác định trước trong Unix như các tùy chọn trên. Tùy chọn này được sử dụng để sắp xếp tệp có dữ liệu số bên trong. 
+-k : Unix cung cấp tính năng sắp xếp bảng dựa trên bất kỳ số cột nào bằng cách sử dụng tùy chọn -k. 
+
+Sử dụng tùy chọn -k để sắp xếp trên một cột nhất định. Ví dụ: sử dụng “-k 2” để sắp xếp trên cột thứ hai
+-c: Tùy chọn này được sử dụng để kiểm tra xem tệp được cung cấp đã được sắp xếp hay chưa & kiểm tra xem tệp đã được sắp xếp hay chưa thông qua tùy chọn -c để sắp xếp. Điều này sẽ ghi vào đầu ra tiêu chuẩn nếu có dòng không theo thứ tự. Công cụ sắp xếp có thể được sử dụng để hiểu xem tệp này có được sắp xếp hay không và dòng nào không theo thứ tự
+-u: Để sắp xếp và loại bỏ các mục trùng lặp , hãy chuyển tùy chọn -u để sắp xếp. Điều này sẽ ghi một danh sách được sắp xếp vào đầu ra tiêu chuẩn và loại bỏ các bản sao. 
+Tùy chọn này hữu ích vì các bản sao bị xóa sẽ cung cấp cho chúng tôi một tệp thừa.
+-M: Để sắp xếp theo tháng , hãy sử dụng tùy chọn -M để sắp xếp. Thao tác này sẽ ghi một danh sách đã sắp xếp thành đầu ra tiêu chuẩn được sắp xếp theo tên tháng
+Ứng dụng và công dụng của lệnh sắp xếp:
+
+Nó có thể sắp xếp bất kỳ loại tệp nào có thể là tệp bảng tệp văn bản tệp số, v.v.
+Việc sắp xếp có thể được thực hiện trực tiếp từ tệp này sang tệp khác mà không bị cản trở công việc hiện tại.
+Việc sắp xếp các tệp bảng trên cơ sở các cột đã được thực hiện đơn giản và dễ dàng hơn.
+Vì vậy, nhiều tùy chọn có sẵn để sắp xếp theo tất cả các cách có thể.
+Cách sử dụng có lợi nhất là một tệp dữ liệu cụ thể có thể được sử dụng nhiều lần vì không có thay đổi nào được thực hiện trong tệp đầu vào được cung cấp.
+Dữ liệu gốc luôn an toàn và không bị cản trở.
+
+6. Split command
+
+Lệnh Split trong Linux được sử dụng để chia các tệp lớn thành các tệp nhỏ hơn . Nó chia các tệp thành 1000 dòng trên mỗi tệp (theo mặc định) và thậm chí cho phép người dùng thay đổi số lượng dòng theo yêu cầu.
+
+Tên của các tệp là PREFIXaa, PREFIXab, PREFIXac, v.v. Theo mặc định, PREFIX của tên tệp là x và kích thước mặc định của mỗi tệp được chia là 1000 dòng trên mỗi tệp và cả hai tham số đều có thể thay đổi dễ dàng. Nó thường được sử dụng với các tệp nhật ký và tệp lưu trữ vì chúng rất lớn và có nhiều dòng, Vì vậy, để chia chúng thành các tệp nhỏ để phân tích, lệnh tách được sử dụng.
+
+Cú pháp:
+
+tách [tùy chọn] tên_của_tệp tiền tố_cho_tệp_mới
+7. uniq command
+
+Lệnh uniq là một tiện ích Unix, có chức năng gỡ bỏ các dòng trống và kề nhau trong văn bản. Nó là một loại chương trình lọc. Thông thường uniq được sử dụng kề sau lệnh sort. Nếu có tùy chọn -d, lệnh chỉ xuất ra các dòng có trùng, tùy chọn -c hiện ra số lần lặp của dòng.
+
+Ví dụ: Để xem danh sách các dòng trong một tập tin, sắp xếp bởi số lần xuất hiện của dòng:
+
+sort file | uniq -c | sort -n
+-u Chỉ hiển thị các dòng không lặp lại
+-d Không hiển thị các dòng không lặp lại
+-c Hiển thị một báo cáo gồm dòng và số lần xuất hiện trong văn bản, khi tùy chọn này được sử dụng, hai tùy chọn -u và -d bị bỏ qua dù có được đưa vào lệnh hay không.
+-i Bỏ qua hoa - thường khi so sánh các dòng
+-f Bỏ qua một số trường trong mỗi dòng
+-s Bỏ qua một số ký tự trong mỗi dòng
+-w Chỉ định số ký tự cần so sánh khi so sánh dòng, các ký tự sau đó được bỏ qua
+--help Hiển thị thông báo trợ giúp
+--version Hiển thị thông tin phiên bản
+8. ln command
+
+Trên hệ điều hành giống Unix, lệnh nl đánh số các dòng trong tệp.
+
+Trang này mô tả phiên bản GNU \/Linux của nl.
+
+Cú pháp
+nl [OPTION]... [FILE]...
+-NS,
+–body-numbering = STYLE
+
+sử dụng STYLE để đánh số các dòng nội dung
+-NS,
+–section-delimiter = CC
+
+sử dụng CC để tách các trang logic
+-NS,
+–footer-numbering = STYLE
+
+sử dụng STYLE để đánh số các dòng chân trang
+-NS,
+–header-numbering = STYLE
+
+sử dụng STYLE để đánh số các dòng tiêu đề
+-tôi,
+–line-increment = NUMBER
+
+tăng số dòng ở mỗi dòng
+-l,
+–join-blank-lines = NUMBER
+
+nhóm NUMBER dòng trống được tính là một
+-n,
+–number-format = FORMAT
+
+chèn số dòng theo FORMAT
+-P,
+–no-renumber
+
+không đặt lại số dòng tại các trang logic
+-NS,
+– dấu phân tách số = STRING
+
+thêm STRING sau số dòng (có thể)
+-v,
+–starting-line-number = NUMBER
+
+số dòng đầu tiên trên mỗi trang logic
+-w,
+–number-width = NUMBER
+
+sử dụng NUMBER cột cho số dòng
+–Cứu giúp	hiển thị trợ giúp và thoát
+–phiên bản	thông tin phiên bản màn hình và thoát
+II. File-Viewing Commands: ‘head’, ‘tail’, ‘less’, ‘cut’, ‘wc’
+1. head command
+Hãy tưởng tượng một tình huống trong đó bạn đang làm việc trên dòng lệnh Linux và một file nhật ký liên tục được xây dựng hoặc cập nhật.
+
+Nhu cầu của bạn chỉ là xem vài dòng đầu tiên để đảm bảo mọi thứ đang hoạt động như dự định. Đó là khi lệnh head trở nên hữu ích vì nó có thể nhanh chóng chỉ hiển thị một vài dòng đầu tiên của file.
+
+Cú pháp:
+
+head <option> <file>
+Trong đó <option> là các tham số khác nhau có thể được sử dụng với lệnh head cho những mục đích khác nhau.
+- Theo mặc định, nó trả về 10 dòng đầu tiên của file. Nếu có nhiều tên file được cung cấp, thì nó sẽ trả về 10 dòng đầu tiên của mỗi file.
+- Thay vì hiển thị 10 dòng đầu tiên, bạn có thể kiểm soát số dòng bạn muốn hiển thị. Cú pháp chung cho mục đích này như sau:
+
+head -n <num> <file>
+- Hiển thị N byte đầu tiên
+Bạn cũng có thể xác định số byte đầu tiên mà bạn muốn hiển thị trong đầu ra thay vì dòng.
+
+Cú pháp:
+
+head -c <num> <file>
+- Hiển thị dữ liệu file với Header
+Bạn có thể sử dụng lệnh head để hiển thị các dòng từ nhiều file luôn đứng trước header filename (tên file).
+
+Cú pháp:
+
+head -v <file1> <file2>
+- Hiển thị dữ liệu file mà không có Header
+Bạn cũng có thể sử dụng lệnh head để hiển thị các dòng từ nhiều file mà không có header filename đứng trước.
+
+Cú pháp:
+
+head -q <file1> <file2>
+2. Tail command
+
+Lệnh tail Linux là một phần của GNU Coreutils tuân thủ triết lý UNIX. Mục đích chính của nó là hiển thị phần cuối cùng của tệp thông qua đầu vào tiêu chuẩn. Người dùng có thể tùy chỉnh số dòng hiển thị bằng cách chỉ định số trong cú pháp.
+
+Đây là giao diện của lệnh tail cơ bản:
+
+tail [file_name]
+Lệnh này có thể có một số tùy chọn, mỗi tùy chọn phục vụ các mục đích khác nhau. Sau đây là một số tùy chọn lệnh phổ biến nhất cùng với các chức năng của chúng:
+
+-c (–bytes) ‒ xuất số byte dữ liệu cuối cùng.
+-n (–lines) – giới hạn số dòng được hiển thị.
+-f (–follow) – theo dõi các tệp để thay đổi.
+-v (–verbose) – in tên tệp trước dữ liệu.
+-q (–quiet, –silent) – bỏ qua tên tệp trước khi in dữ liệu.
+-version – hiển thị thông tin phiên bản đuôi.
+
+3. Less command
+
+Less là một tiện ích dòng lệnh hiển thị nội dung của tệp hoặc đầu ra lệnh, một trang tại một thời điểm. Nó tương tự như more, nhưng có nhiều tính năng nâng cao hơn và cho phép bạn điều hướng cả về phía trước và phía sau thông qua tệp.
+
+Cú pháp chung của less như sau:
+
+less [OPTIONS] filename
+Ví dụ, để xem nội dung của /usr/share/common-licenses/GPL-3 tệp, bạn sẽ nhập:
+
+less /usr/share/common-licenses/GPL-3
+Bạn cũng có thể chuyển hướng đầu ra từ lệnh sang less sử dụng pipeline. Ví dụ, để xem đầu ra của ps trang lệnh theo từng trang, bạn sẽ nhập:
+
+ps aux | less
+Nếu bạn muốn less hiển thị số dòng, hãy khởi chạy chương trình với tùy chọn -N:
+
+- less -N filename
+Theo mặc định, khi less thoát, nội dung tệp sẽ bị xóa khỏi màn hình. Để hiển thị nội dung tệp trên màn hình, hãy sử dụng tùy chọn -X:
+
+- less -X filename
+Tùy chọn +F bảo less để xem nội dung tập tin cho những thay đổi. Điều này rất hữu ích khi mở các tệp nhật ký.
+
+- less +F /var/log/messages
+Khi khởi chạy với +F, less sẽ hoạt động khá giống với tail -f .
+
+4. Cut command
+
+Có rất nhiều tiện ích có sẵn trong các hệ thống Linux và Unix cho phép bạn xử lý và lọc các tệp văn bản. cut là một tiện ích dòng lệnh cho phép bạn cắt các phần của dòng từ các tệp hoặc dữ liệu được chỉ định và in kết quả ra đầu ra tiêu chuẩn. Nó có thể được sử dụng để cắt các phần của một dòng theo dấu phân cách, vị trí byte và ký tự.
+Cú pháp của cut như sau:
+
+cut OPTION... [FILE]...
+Các tùy chọn cho biết cut nên sử dụng dấu phân cách, vị trí byte hoặc ký tự khi cắt các phần đã chọn trên các dòng như sau:
+
+-f( --fields=LIST) – Chọn bằng cách chỉ định một trường, một tập hợp các trường hoặc một phạm vi trường. Đây là tùy chọn được sử dụng phổ biến nhất.
+-b( --bytes=LIST) – Chọn bằng cách chỉ định một byte, một tập hợp các byte hoặc một dải byte.
+-c( --characters=LIST) – Chọn bằng cách chỉ định một ký tự, một bộ ký tự hoặc một dải ký tự.
+Bạn có thể sử dụng một và chỉ một trong các tùy chọn được liệt kê ở trên.
+
+Các tùy chọn khác là:
+
+-d( --delimiter) – Chỉ định một dấu phân cách sẽ được sử dụng thay cho dấu phân cách “TAB” mặc định.
+--complement– Bổ sung cho việc lựa chọn. Khi sử dụng tùy chọn này cut sẽ hiển thị tất cả các byte, ký tự hoặc trường ngoại trừ các trường đã chọn.
+-s( --only-delimited) – Theo mặc định cut in các dòng không chứa ký tự phân cách. Khi tùy chọn này được sử dụng, cut không in các dòng không chứa dấu phân cách.
+--output-delimiter– Hành vi mặc định của cut là sử dụng dấu phân cách đầu vào làm dấu phân cách đầu ra. Tùy chọn này cho phép bạn chỉ định một chuỗi dấu phân cách đầu ra khác.
+
+
