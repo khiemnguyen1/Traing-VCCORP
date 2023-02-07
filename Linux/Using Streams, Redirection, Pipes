@@ -1,4 +1,4 @@
-1. Tìm hiểu về File Descriptor:
+I. Tìm hiểu về File Descriptor:
 Linux xử lý tất cả các object như là một file vậy, bao gồm cả những dòng input và output từ terminal. Để xác định một file object nhất định Linux sử dụng file desciptor (tạm dịch là đặc tả tập tin). Linux dùng các file descriptor chính như sau:
 
 Process ----> #0 stdin  ---> Keyboard
@@ -12,7 +12,30 @@ Process ----> #0 stdin  ---> Keyboard
 + Standard Error (stderr): có file descriptor là 2, thể hiện các thông tin quan trọng như lỗi ra màn hình như stdout, ta có thể tách biệt stderr ra 1 file riêng so với stdout để theo dõi.
 
 2. Minh họa cho các streams
-+ stdin:  
-![Screenshot from 2023-02-07 15-51-57](https://user-images.githubusercontent.com/93119453/217197318-a1479b9e-6d3c-4860-a738-49053bfb9dc2.png)
++ stdin:  root@adminn-B365-M-AORUS-ELITE /h/a/K/T/Linux (main) [SIGINT]# ls
++ stdout: BasicCMD.md  ShellenvVariable
++ sterr: ls-l
+         ls-l: command not found
+3. Redirect Input và Output:
+- Ví dụ để redirect input ta sử dụng < 
+wc -l < users
+2
+- Ví dụ để redirect stdout của lệnh echo ta kết hợp lệnh đó với các operator như sau:
+echo $PATH 1> file1.txt
+Ở câu lệnh trên ta dùng operator > (dấu nhọn hướng đến đâu output đi đến đó) để redirect output của lệnh echo vào file1.txt, với file descriptor là 1 ta chỉ redirect stdout mà thôi 
+- Ví dụ để redirect stderr 
+# [command error] 2> file.txt
 
+Mẹo nhỏ:
 
+Nếu bạn muốn thoát khỏi một lượng data khổng lồ từ 1 chương trình nào đó hãy redirect nó đến** /dev/null** (đây là device kết nối đến "hư không"). Ví dụ bạn mún redirect các stderr vào hư không:
+
+II. Pipe data 
+
+- Pipe data được sử dụng trong trường hợp ta muốn lấy output của program1 đem làm input của program2. Cách sử dụng như sau:
+
+$ proram 1 | program 2 | program 3
+
+Một ví dụ cụ thể hơn, ta mún xuất biến $PATH ra cả stdoutput lẫn vào file2.txt, khi đó ta sẽ dùng lệnh tee như sau:
+
+$ echo ls /etc/ | grep sys | tee file2.txt
