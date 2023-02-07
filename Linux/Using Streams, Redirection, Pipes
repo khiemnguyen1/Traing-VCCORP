@@ -12,6 +12,8 @@ Process ----> #0 stdin  ---> Keyboard
 + Standard Error (stderr): có file descriptor là 2, thể hiện các thông tin quan trọng như lỗi ra màn hình như stdout, ta có thể tách biệt stderr ra 1 file riêng so với stdout để theo dõi.
 
 2. Minh họa cho các streams
-+ stdin:  ![image](https://user-images.githubusercontent.com/93119453/217196057-1148ecbb-16e5-4739-8599-061ee2939ebb.png)
++ stdin:  
+
+![image](https://user-images.githubusercontent.com/93119453/217196057-1148ecbb-16e5-4739-8599-061ee2939ebb.png)
 
 
