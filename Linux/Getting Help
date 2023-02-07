@@ -1,0 +1,46 @@
+LỆNH MAN TRONG LINUX.
+Chúng ta có thể nói rằng Linux là một hệ điều hành rất phức tạp với hàng nghìn lệnh và mỗi lệnh lại có thể có tới vài hoặc vài chục tình huống sử dụng do chúng cho phép có nhiều tùy chọn lệnh. Để thuộc hết nội dung tất cả các lệnh của Linux là một điều hết sức khó khăn, có thể nói là không thể. Linux cho phép người dùng sử dụng cách thức gọi trang Man để có được các thông tin đầy đủ giới thiệu nội dung các lệnh. Dưới đây là một số nội dung về cách thức sử dụng trang Man.
+“Man” là từ viết tắt của “manual”, được coi là tài liệu trực tuyến trong Linux đã lưu trữ toàn bộ các lệnh có sẵn với các thông tin tham khảo khá đầy đủ cho phép người dùng có thể mở ra để nhận được trợ giúp.
+Để mở trang Man của một lệnh, chúng ta sử dụng lệnh man của Linux và gõ:
+           # man
+
+Nội dung của trang Man tuy không phải là quá khó hiểu, song để hiểu hết được nó cũng đòi hỏi không ít thời gian. Tuy vậy, nếu quên nội dung một lệnh nào đó thì cách tốt nhất là hãy sử dụng trang Man.
+Cấu trúc của một trang Man như sau:
+
+COMMAND (1) Linux Programmer’s Manual COMMAND (1)
+
+NAME
+
+tên lệnh - khái quát tác dụng của lệnh
+
+SYNOPSIS
+
+cú pháp của lệnh
+
+DESCRIPTION
+
+mô tả cụ thể hơn về tác dụng của lệnh
+
+OPTIONS
+
+liệt kê các tùy chọn lệnh và tác dụng của chúng
+
+FILES
+
+liệt kê các file mà lệnh sử dụng hoặc tham chiếu đến
+
+SEE ALSO
+
+liệt kê các lệnh, các tài liệu,…, có liên quan đến lệnh
+
+REPORTING BUGS
+
+địa chỉ liên hệ nếu gặp lỗi khi sử dụng lệnh
+
+AUTHOR
+
+tên tác giả của lệnh
+
+ 
+
+Người dùng thậm chí không nhớ chính xác tên lệnh. Linux còn có một cách hổ trợ người dùng có thể nhanh chóng tìm được lệnh cần sử dụng trong trường hợp chỉ nhớ những chữ cái đầu của tên lệnh, đó là cách thức sử dụng TAB. Trong cách thức này, người dùng chỉ cần nhớ một số chữ cái đầu tiên của tên lệnh.
