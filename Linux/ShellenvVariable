@@ -1,0 +1,51 @@
+understanding shell environment variables
+
+1. Khái Niệm Biến Môi Trường Là Gì?
+Biến môi trường là các đại lượng cụ thể có các giá trị cụ thể. Một số biến môi trường được cung cấp các giá trị đặt trước của hệ thống và có thể đặt trực tiếp bởi người dùng, tại dòng lệnh hoặc trong khi khởi động các tập lệnh khác.
+
+Biến môi trường là một chuỗi ký tự chứa thông tin được sử dụng bởi một hoặc nhiều ứng dụng.
+
+2. Các Biến Môi Trường Phổ Biến Trên Linux
+Trong Linux, mặc định có một số biến đã được cấu hình trước. Các biến bao gồm:
+
+$HOME: là biến môi trường đại diện cho thư mục gốc của người dùng.
+$PATH: một danh sách các thư mục sẽ được tìm kiếm khi thực hiện các lệnh. Khi bạn chạy một lệnh, hệ thống sẽ tìm kiếm các thư mục theo thứ tự này và sử dụng tệp thực thi đầu tiên được tìm
+$USER: người dùng đăng nhập hiện tại
+$SHELL: đường dẫn của shell hiện tại của người dùng, (bash , zsh)
+$LOGNAME: tên của người dùng hiện tại
+$LANG: cài đặt local hiện tại (ngôn ngữ, font chữ)
+$MAIL: vị trí lưu trữ thư của người dùng hiện tại
+$EDITOR: trình chỉnh sửa tập tin mặc định sẽ được sử dụng
+
+3. Thao Tác Với Biến Trong Linux
+Để hiển thị giá trị của biến bất kỳ, sử dụng câu lệnh “echo VARNAME” hoặc “printenv VARNAME”
+
+abc@datntwork:~$ echo $HOME
+/home/abc
+abc@datntwork:~$ printenv HOME
+/home/abc
+Để hiển thị tất cả các biến môi trường đang có trong hệ thống, sử dụng câu lệnh “printenv”
+
+Tạo một biến môi trường mới: “ValiableName=Value”. Trong ví dụ dưới, tạo biến môi trường MYVAR với giá trị là “ngotiendat” và sử dụng lệnh “echo” để hiển thị giá trị của biến:
+
+datnt@datntwork:~$ MYVAR="abc"
+datnt@datntwork:~$ echo $MYVAR
+abc
+Nếu muốn thay đổi giá trị của biến đã set trước đó, sử dụng câu lệnh “export ValiableName=NewValue“,
+
+~$ export MYVAR='giatrimoi'
+~$ echo $MYVAR
+giatrimoi
+Với 2 cách trên, giá trị của biến chỉ lưu trong phiên đăng nhập đó, nếu logout hoặc restart lại máy, giá trị của biến sẽ mất. Nếu biến đó cần giá trị cố định, chúng ta có thể khai báo trong mục /etc/enviroment với lệnh “sudo vi /etc/enviroment” và khai báo giá trị của biến với format: “ValiableName=Value” sau đó lưu lại.
+
+datnt@datntwork:~$ cat /etc/environment
+NEWVAR="abc"
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+
+Bây giờ bạn có thể restart hoặc logout để kiểm tra lai giá trị NEWVAR xem còn tồn tại không.
+
+Nếu như bạn chỉ muốn sử dụng biến trong một user bất kỳ, chỉ cần khai  báo biến đó trong “~/.bashrc” là được.
+
+Nếu như sau khi sử dụng biến bạn không còn nhu cầu sử dụng tiếp nữa, có thể sử dụng câu lệnh “unset ValiableName“. Tuy nhiên cần lưu ý, nếu bạn đã khai báo biến trong /etc/enviroment thì nó chỉ có giá trị trong phiên làm việc này, nếu logout hoặc restart, biến sẽ vẫn tồn tại.
+
+$ unset NEWVAR
