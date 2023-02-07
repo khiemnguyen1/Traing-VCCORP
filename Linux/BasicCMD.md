@@ -43,14 +43,18 @@ Một số cách dùng cộng thêm của lệnh mkdir:
 8. rmdir
 Nếu bạn cần xóa thư mục, sử dụng command rmdir. Tuy nhiên, rmdir chỉ cho phép bạn xóa các thư mục trống.
 9.  rm
+
 Command rm được sử dụng để xóa thư mục cùng và nội dung bên trong. Nếu bạn chỉ muốn xóa thư mục – tương tự như lệnh rmdir – sử dụng rm -r.
 Lưu ý: Khi dùng các lệnh cơ bản trong Linux bạn cần cẩn thận, đặc biệt là lệnh này. Bạn cần kiểm tra kỹ bạn đang ở thư mục nào. Nó sẽ xóa mọi thứ và không khôi phục được.
 10.  touch
+
 Command touch cho phép bạn tạo files mới trống thông qua dòng lệnh. Ví dụ: nhập touch /home/username/Documents/Web.html để tạo file HTML tiêu đề Web trong thư mục Documents.
 11.  locate
+
 Bạn có thể sử dụng lệnh này để locate (định vị) file, giống như lệnh tìm kiếm trong Windows. Hơn nữa, việc sử dụng argument -i với lệnh này làm cho nó không còn phân biệt chữ hoa chữ thường, nên bạn có thể tìm file ngay cả khi không nhớ tên chính xác.
 Để tìm file chứa hai hoặc nhiều từ, hãy sử dụng dấu hoa thị (). Ví dụ: command locate -i schoolnote sẽ tìm tất cả file nào chứa từ “school” và “note”, không phân biệt chữ hoa hay chữ thường.
 12. find
+
 Tương tự như command locate, command find cũng tìm files. Sự khác biệt là bạn sử dụng command find để xác định vị trí files trong thư mục nhất định.
 Ví dụ, command find /home/ -name notes.txt sẽ tìm file tên notes.txt trong thư mục chính và thư mục con của nó.
 Một vài biết thể để dùng lệnh find là:
@@ -65,8 +69,10 @@ Command df dùng để nhận báo cáo về dung lượng lưu trữ được s
 16.  du
 Nếu bạn muốn kiểm tra dung lượng của file hoặc của thư mục, command du (Disk Usage – Dung lượng lưu trữ) sẽ làm chuyện này. Tuy nhiên, bản tóm tắt về dung lượng lưu trữ sẽ hiển thị block numbers của ổ đĩa thay vì định dạng kích thước thông thường. Nếu bạn muốn xem theo byte, kilobyte và megabyte, hãy thêm argument -h vào dòng lệnh.
 17.  head
+
 Command head được sử dụng để xem dòng đầu tiên của bất kỳ file văn bản nào. Theo mặc định, nó sẽ hiển thị 10 dòng đầu tiên, nhưng bạn có thể thay đổi số này theo ý mình. Ví dụ: nếu bạn chỉ muốn hiển thị 5 dòng đầu tiên, hãy nhập head -n 5 filename.ext.
 18. tail
+
 Command này có chức năng tương tự như command head, nhưng thay vì hiển thị dòng đầu tiên, command tail sẽ hiển thị 10 dòng cuối cùng của file văn bản. Ví dụ, tail -n filename.ext.
 19. diff 
 Viết tắt của difference, command diff sẽ so sánh nội dung của 2 files từng dòng một. Sau khi phân tích files này, nó sẽ xuất ra các dòng không khớp nhau. Lập trình viên thường dùng lệnh này khi cần thực hiện một số thay đổi chương trình thay vì viết lại toàn bộ mã nguồn.
