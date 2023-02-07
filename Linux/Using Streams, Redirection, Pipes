@@ -1,0 +1,15 @@
+1. Tìm hiểu về File Descriptor:
+Linux xử lý tất cả các object như là một file vậy, bao gồm cả những dòng input và output từ terminal. Để xác định một file object nhất định Linux sử dụng file desciptor (tạm dịch là đặc tả tập tin). Linux dùng các file descriptor chính như sau:
+
+Process ----> #0 stdin  ---> Keyboard
+              #1 stdout ----> Display
+              #2 stderr ----> Display
+              
++ Standard Input (stdin): có file desciptor là 0, trong hầu hết các trường hợp data đến từ keyboard của người dùng.
+
++ Standard Output (stdout): có file descriptor là 1, thể hiện trên màn hình dạng text-mode hoặc GUI.
+
++ Standard Error (stderr): có file descriptor là 2, thể hiện các thông tin quan trọng như lỗi ra màn hình như stdout, ta có thể tách biệt stderr ra 1 file riêng so với stdout để theo dõi.
+
+2. Minh họa cho các streams
++ stdin:
