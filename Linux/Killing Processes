@@ -1,0 +1,65 @@
+Kill process bằng phím tắt trên terminal
+Command line trên linux có một số phím tắt khá hữu ích. Trong đó, có một số phím tắt có thể được sử dụng để kill một process đang chạy.
+
+Ctrl+C: nó sẽ gửi SIGINT để chấm dứt process đang chạy.
+
+Ctrl+Z: nó sẽ gửi SIGSTP để tạm dừng một ứng dụng và chạy nó ở chế độ background. Tuy nhiên, nó không chấm dứt process. Để xem các process bị dừng, bạn có thể sử dụng lệnh jobs. Sử dụng lệnh fg để đưa process trở thành foreground.
+
+Ctrl+\: nó gửi SIGQUIT để chấm dứt process. Nó cũng tạo ra một core dump file – được sử dụng để debug process.
+
+Kill process sử dụng lệnh kill
+Có một số dòng lệnh khá hữu ích được sử dụng để kill process trên hệ thống Linux như là kill, pkill và killall.
+
+Để tìm những process nào hiện đang chạy trên hệ thống, bạn có thể sử dụng lệnh ps với cờ -A để xem.
+
+$ ps –A
+Nó sẽ liệt kê tất cả các process đang chạy trên hệ thống của bạn.
+
+Kill
+Lệnh kill có thể được dùng dđể kill process đang chạy trên hệ thống Linux. Được sử dụng đi kèm với PID – là id của process sẽ bị kill.
+
+Để tìm ID của process đang chạy, bạn có thể dùng lệnh ps -A và truyền vào pipe vào lệnh grep để tìm chính xác process ID của một process cụ thể.
+
+$ ps –A | grep <processname>
+Ví dụ: Để tìm process ID của chương trình FireFox đang chạy, bạn có thể sử dụng lệnh sau:
+
+$ ps –A | grep firefox
+Một khi bạn đã thấy PID của process cụ thể nào đó, bạn có thể kill nó như sau:
+
+$ kill PID
+Lệnh kill sẽ gửi tín hiệu SIGTERM tới PID cụ thể được yêu cầu chấm dứt sau khi thực hiện các hoạt động dọn dẹp cần thiết.
+
+Trong một số trường hợp, chạy lệnh kill có thể sẽ không thể chấm dứt một process được. Trong trường hợp này, bạn cần phải sử dụng thêm tùy chọn “-9” nữa thì mới kill triệt để được process.
+
+$ kill -9 PID
+Sử dụng tùy chọn -9 với lệnh kill sẽ gửi tín hiệu SIGKILL được yêu cầu xử lý chấm dứt process ngay lập tức mà không có bất kỳ hoạt động dọn dẹp nào được diễn ra.
+
+Pkill
+Tương tự như lệnh kill, pkill cũng gửi tín hiệu SIGTERM cho phép chấm dứt một process nào đó không có phản hồi. Tuy nhiên, có một số lợi ích  của pkill so với lệnh kill – chính là bạn sẽ không cần phải cung cấp PID của một process nữa. Thay vì vậy, bạn chỉ cần cung cấp từ khóa khớp với lại process cần kill.
+
+$ pkill <keyword>
+Ví dụ, để kill chương trình FireFox, bạn chỉ cần gõ lệnh như sau là cũng kill được process rồi.
+
+$ pkill firef
+Ở lệnh trên, nó sẽ kill hết tất cả các process có tên khớp với từ khóa như đã đề cập bên trên.
+
+Với pkill, bạn cũng có một số tùy chọn để kill các process đang chạy bởi một người dùng cụ thể.
+
+$ pkill –u <username> < keyword>
+Hãy cẩn thận khi sử dụng tùy chọn này, bởi nếu bạn không chỉ định từ khóa của process, tất cả các process với username được chỉ định sẽ bị kill hết.
+
+Killall
+Lệnh killall cũng tương tự như pkill ngoại trừ việc nó cần tên process đầy đủ chính xác luôn thay vì là khớp từ khóa.
+
+Để sử dụng lệnh killall để chấm dứt tất cả process và các process con của chúng với một cái tên process cụ thể, sử dụng cú pháp như sau:
+
+$ killall <prcoessname>
+Ví dụ:
+
+$ killall firefox
+
+Sự khác nhau giữa kill và kill -9
+- kill yêu cầu tiến trình dừng hoạt động. Còn kill -9 thì chấm dứt hoạt động của tiến trình ngay lập tức.
+- kill có thể được xử lý hoặc từ chối xử lý quá trình dừng hoạt động bởi tiến trình. Còn kill -9 thì không 
+- kill sẽ không dừng hoạt động của tiến trình con. Còn kill -9 sẽ dừng hoạt động cả tiến trình cha và tiến trình con nếu có.
+- kill -9 dễ tạo ra các tiến trình ma (zombie process) vì tiến trình bị ngừng hoạt động sẽ không có cơ hội thông báo cho tiến trình cha hoặc tiến trình con về việc bị ngừng hoạt động.
