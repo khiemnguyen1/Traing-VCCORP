@@ -9,39 +9,47 @@ Liệt kê tất cả các quy trình trong Shell hiện tại
 Nếu bạn chạy lệnh ps mà không có bất kỳ đối số nào, lệnh này sẽ hiển thị các quy trình cho trình bao hiện tại.
 $ ps 
 
-Hiển thị mọi quy trình đang hoạt động trên hệ thống Linux ở định dạng chung (Unix/Linux).
+- Hiển thị mọi quy trình đang hoạt động trên hệ thống Linux ở định dạng chung (Unix/Linux).
 $ ps -A
 HOẶC
 $ ps -e
 
-Hiển thị tất cả các quy trình ở định dạng BSD .
+- Hiển thị tất cả các quy trình ở định dạng BSD .
 $ps au
 HOẶC
 $ ps xu
 
-Để thực hiện một danh sách định dạng đầy đủ, hãy thêm cờ -fhoặc .-F
+- Để thực hiện một danh sách định dạng đầy đủ, hãy thêm cờ -fhoặc .-F
 $ ps -ef
 HOẶC
 $ ps -eF
 
-Hiển thị quy trình đang chạy của người dùng
+- Hiển thị quy trình đang chạy của người dùng
 Bạn có thể chọn tất cả các quy trình thuộc sở hữu của mình (người chạy lệnh ps , root trong trường hợp này), gõ:
 
 $ ps -x 
-Để hiển thị các quy trình của người dùng theo ID người dùng thực ( RUID ) hoặc tên, hãy sử dụng -Ucờ.
+- Để hiển thị các quy trình của người dùng theo ID người dùng thực ( RUID ) hoặc tên, hãy sử dụng -Ucờ.
 
 $ ps -fU tecmint
 HOẶC
 $ ps -fu 1000
 
-In tất cả các quy trình đang chạy với quyền root (ID thực và hiệu quả)
-8. Lệnh bên dưới cho phép bạn xem mọi tiến trình đang chạy với quyền người dùng root (ID thực & hiệu quả) ở định dạng người dùng.
+- In tất cả các quy trình đang chạy với quyền root (ID thực và hiệu quả)
+Lệnh bên dưới cho phép bạn xem mọi tiến trình đang chạy với quyền người dùng root (ID thực & hiệu quả) ở định dạng người dùng.
 
 $ ps -U root -u root
 
-Hiển thị quy trình nhóm
+- Hiển thị quy trình nhóm
 Nếu bạn muốn liệt kê tất cả các quy trình thuộc sở hữu của một nhóm nhất định (ID nhóm thực ( RGID ) hoặc tên), hãy nhập.
 
 $ ps -fG apache
 HOẶC
 $ ps -fG 48
+- Hiển thị tiến trình cha và con
+Để chọn một quy trình cụ thể theo tên của nó, hãy sử dụng cờ -C, điều này cũng sẽ hiển thị tất cả các quy trình con của nó.
+
+$ ps -C sshd
+
+- Tìm tất cả các PID của tất cả các phiên bản của một quy trình, hữu ích khi viết các tập lệnh cần đọc các PID từ đầu ra hoặc tệp std.
+
+$ ps -C httpd -o pid=
