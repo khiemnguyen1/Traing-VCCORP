@@ -1,0 +1,47 @@
+ps ( process status ) là một tiện ích gốc của Unix/Linux để xem thông tin liên quan đến việc lựa chọn các tiến trình đang 
+chạy trên một hệ thống: nó đọc thông tin này từ các tệp ảo trong hệ thống tệp /proc . Đây là một trong những tiện ích quan trọng để quản trị hệ thống, 
+đặc biệt là theo dõi quy trình, giúp bạn hiểu điều gì đang diễn ra trong hệ thống Linux.
+
+Nó có nhiều tùy chọn để thao tác đầu ra của nó, tuy nhiên, bạn sẽ thấy một số ít trong số chúng thực sự hữu ích cho việc sử dụng hàng ngày.
+Liệt kê tất cả các quy trình trong Shell hiện tại
+1. ps Command
+
+Nếu bạn chạy lệnh ps mà không có bất kỳ đối số nào, lệnh này sẽ hiển thị các quy trình cho trình bao hiện tại.
+$ ps 
+
+Hiển thị mọi quy trình đang hoạt động trên hệ thống Linux ở định dạng chung (Unix/Linux).
+$ ps -A
+HOẶC
+$ ps -e
+
+Hiển thị tất cả các quy trình ở định dạng BSD .
+$ps au
+HOẶC
+$ ps xu
+
+Để thực hiện một danh sách định dạng đầy đủ, hãy thêm cờ -fhoặc .-F
+$ ps -ef
+HOẶC
+$ ps -eF
+
+Hiển thị quy trình đang chạy của người dùng
+Bạn có thể chọn tất cả các quy trình thuộc sở hữu của mình (người chạy lệnh ps , root trong trường hợp này), gõ:
+
+$ ps -x 
+Để hiển thị các quy trình của người dùng theo ID người dùng thực ( RUID ) hoặc tên, hãy sử dụng -Ucờ.
+
+$ ps -fU tecmint
+HOẶC
+$ ps -fu 1000
+
+In tất cả các quy trình đang chạy với quyền root (ID thực và hiệu quả)
+8. Lệnh bên dưới cho phép bạn xem mọi tiến trình đang chạy với quyền người dùng root (ID thực & hiệu quả) ở định dạng người dùng.
+
+$ ps -U root -u root
+
+Hiển thị quy trình nhóm
+Nếu bạn muốn liệt kê tất cả các quy trình thuộc sở hữu của một nhóm nhất định (ID nhóm thực ( RGID ) hoặc tên), hãy nhập.
+
+$ ps -fG apache
+HOẶC
+$ ps -fG 48
