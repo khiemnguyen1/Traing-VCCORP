@@ -1,0 +1,64 @@
+Cách sử dụng 'fsck' để sửa lỗi hệ thống tệp trong Linux
+Hệ thống tập tin chịu trách nhiệm tổ chức cách dữ liệu được lưu trữ và phục hồi. Bằng cách này hay cách khác, theo thời gian, hệ thống tệp có thể bị hỏng và một số phần của nó có thể không truy cập được. Nếu hệ thống tệp của bạn phát triển sự không nhất quán như vậy, bạn nên xác minh tính toàn vẹn của nó.
+
+Điều này có thể được hoàn thành thông qua tiện ích hệ thống có tên là fsck ( kiểm tra tính nhất quán của hệ thống tệp ). Việc kiểm tra này có thể được thực hiện tự động trong thời gian khởi động hoặc chạy thủ công.
+
+Trong bài viết này, chúng tôi sẽ xem xét tiện ích fsck và cách sử dụng tiện ích này để giúp bạn sửa lỗi đĩa.
+
+Khi nào nên sử dụng fsck trong Linux
+Có nhiều tình huống khác nhau khi bạn muốn chạy fsck. Dưới đây là một vài ví dụ:
+
+Hệ thống không khởi động được.
+Các tệp trên hệ thống bị hỏng (bạn thường có thể thấy lỗi đầu vào/đầu ra).
+Ổ đĩa đi kèm (bao gồm cả ổ đĩa flash/thẻ SD) không hoạt động như mong đợi.
+fsck Các tùy chọn khả dụng
+Lệnh fsck cần được chạy với quyền siêu người dùng hoặc quyền root . Bạn có thể sử dụng nó với các đối số khác nhau. Cách sử dụng của họ phụ thuộc vào trường hợp cụ thể của bạn. Dưới đây bạn sẽ thấy một số tùy chọn quan trọng hơn:
+
+-A– Được sử dụng để kiểm tra tất cả các hệ thống tập tin. Danh sách được lấy từ /etc/fstab.
+-C- Hiển thị thanh tiến trình.
+-l– Khóa thiết bị để đảm bảo không có chương trình nào khác cố gắng sử dụng phân vùng trong quá trình kiểm tra.
+-M– Không kiểm tra các hệ thống tập tin được gắn kết.
+-N– Chỉ hiển thị những gì sẽ được thực hiện – không có thay đổi thực tế nào được thực hiện.
+-P– Nếu bạn muốn kiểm tra song song các hệ thống tập tin, bao gồm cả root.
+-R– Không kiểm tra hệ thống tập tin gốc. Điều này chỉ hữu ích với ' -A'.
+-r– Cung cấp số liệu thống kê cho từng thiết bị đang được kiểm tra.
+-T- Không hiển thị tiêu đề.
+-t– Chỉ định riêng các loại hệ thống tệp sẽ được kiểm tra. Các loại có thể là danh sách được phân tách bằng dấu phẩy.
+-V– Cung cấp mô tả những gì đang được thực hiện.
+Cách chạy fsck để sửa lỗi hệ thống tệp Linux
+Để chạy fsck , bạn cần đảm bảo rằng phân vùng bạn sắp kiểm tra không được gắn kết. Với mục đích của bài viết này, tôi sẽ sử dụng ổ đĩa thứ hai /dev/sdbđược gắn trong /mnt.
+
+Đây là những gì xảy ra nếu tôi cố chạy fsck khi phân vùng được gắn kết.
+
+# fsck /dev/sdb
+
+Để tránh điều này, hãy ngắt kết nối phân vùng bằng cách sử dụng.
+# umount /dev/sdb
+Sau đó, fsck có thể được chạy một cách an toàn.\
+# fsck /dev/sdb
+Hiểu mã thoát fsck
+Sau khi chạy fsck , nó sẽ trả về mã thoát. Những mã này có thể được nhìn thấy trong hướng dẫn của fsck bằng cách chạy:
+# man fsck
+
+0      No errors
+1      Filesystem errors corrected
+2      System should be rebooted
+4      Filesystem errors left uncorrected
+8      Operational error
+16     Usage or syntax error
+32     Checking canceled by user request
+128    Shared-library error 
+
+Sửa lỗi hệ thống tập tin Linux
+Đôi khi có thể tìm thấy nhiều hơn một lỗi trên một hệ thống tệp. Trong những trường hợp như vậy, bạn có thể muốn fsck tự động sửa lỗi. Điều này có thể được thực hiện với:
+# fsck -y /dev/sdb
+Cờ -y, tự động “yes”cho bất kỳ lời nhắc nào từ fsck để sửa lỗi.
+
+Tương tự, bạn có thể chạy giống nhau trên tất cả các hệ thống tệp (không có root ):
+
+$ fsck -AR -y 
+Cách chạy fsck trên phân vùng gốc Linux
+Trong một số trường hợp, bạn có thể cần chạy fsck trên phân vùng gốc của hệ thống. Vì bạn không thể chạy fsck trong khi phân vùng được gắn kết, bạn có thể thử một trong các tùy chọn sau:
+
+Buộc fsck khi khởi động hệ thống
+Chạy fsck trong chế độ cứu hộ
