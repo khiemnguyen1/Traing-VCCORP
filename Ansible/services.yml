@@ -3,40 +3,26 @@
   remote_user:
   hosts: "{{ hosts }}"
   become: yes
-  gather_facts: false
   vars:
-    - user: khiemnguyen
+    - user: vais
     - password: 123321@a
   tasks:
-      - name: Create a login user
-        user:
-          name: "{{ user }}"
-          password: "{{ password }}"
-          groups:
-             - wheel
-          state: present
-        become: yes
-        become_method: "sudo"     
-  tasks:
-      - name: Disable SSH password authentication
-        become: true
-        lineinfile:
-          dest: /etc/ssh/sshd_config
-          regexp: '^#?\s*PasswordAuthentication\s'
-          line: 'PasswordAuthentication no'
-          state: present
-        notify:
-          - restart sshd 
- tasks:
-    - name: Create an ssh key
-      user:
-        name: "{{ user }}"
-        generate_ssh_key: yes
-        ssh_key_bits: 2048
-        ssh_key_file: .ssh/id_rsa
+     - name: Create a login user
+       ansible.builtin.user:
+         name: khiemnguyen
+         shell: /bin/bash
+         groups: sudo
+         state: present 
 
-    - name: Add authorized key from id_rsa.pub file
-      authorized_key:
-        user: "{{ user }}"
-        state: present
-        key: "{{ lookup('file', '/home/adminn/.ssh/id_rsa.pub') }}"
+     - name: Disable SSH password authentication
+       become: true
+       lineinfile:
+         dest: /etc/ssh/sshd_config
+         regexp: '^#?\s*PasswordAuthentication\s'
+         line: 'PasswordAuthentication no'
+         state: present
+     - name: restart services sshd
+       ansible.builtin.service:
+         name: sshd
+         state: restarted
+         enabled: true  
