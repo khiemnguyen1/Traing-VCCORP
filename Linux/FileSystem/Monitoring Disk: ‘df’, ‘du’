@@ -1,0 +1,19 @@
+df
+Lệnh "disk free" là một công cụ dòng lệnh tuyệt vời cung cấp cho bạn chế độ xem nhanh 30.000 foot về hệ thống tệp của bạn và tất cả các đĩa được gắn. Nó cho bạn biết tổng kích thước đĩa, dung lượng đã sử dụng, dung lượng khả dụng, phần trăm sử dụng và phân vùng mà đĩa được gắn vào. Tôi khuyên bạn nên ghép nối nó với -hcờ để làm cho dữ liệu có thể đọc được. Các số liệu mà bạn thấy ở đây được tính toán từ cấp độ điểm gắn kết hoặc hệ thống tệp:
+
+Hình ảnh
+df -h chạy trên thư mục/home/user của tôi
+Ngoài ra, hãy lưu ý rằng việc sử dụng -hcờ sẽ làm tròn dữ liệu của bạn để dễ hiểu hơn, do đó, 3G của bạn có thể gần bằng 2,9G hoặc 3,1G. Bạn không thể chắc chắn. 
+
+du
+Lệnh "sử dụng đĩa" là tuyệt vời khi được áp dụng trong ngữ cảnh chính xác. Lệnh này là tốt nhất khi bạn cần xem kích thước của một thư mục hoặc thư mục con nhất định. Nó chạy ở cấp độ đối tượng và chỉ báo cáo về các số liệu thống kê được chỉ định tại thời điểm thực hiện. Tôi thích ghép nối lệnh này với các -shcờ để đưa ra một bản tóm tắt mà con người có thể đọc được về một đối tượng đã chỉ định (thư mục và tất cả các thư mục con), như bạn có thể thấy ở đây:
+
+Hình ảnh
+du -sh trên /home/thư mục người dùng
+dfso vớidu
+Vì vậy, các trường hợp sử dụng cho mỗi lệnh là gì và bạn nên đặt niềm tin vào đầu ra của lệnh nào? Câu trả lời (rất phức tạp) có thể được tóm tắt tốt nhất như sau:  df Lệnh này cung cấp một con số bao quát về tổng thể dung lượng đang được sử dụng trên toàn bộ hệ thống tệp của bạn. Lệnh  du này là một ảnh chụp nhanh chính xác hơn nhiều về một thư mục hoặc thư mục con nhất định.
+
+Nếu tôi phải đặt tiền vào lệnh nào đang nói "sự thật", tôi sẽ đặt cược vào du. Ví dụ: nếu tôi gặp lỗi khi cố cài đặt một gói trong /varđó thư mục đã đầy, tôi có thể chạy dflệnh để xác nhận rằng điều này là đúng. Khi tôi có thể thấy rằng nó đã hết /varcông suất, tôi có thể chạy du /var để xem thư mục con nào đang gây ra sự cố cho tôi. Sau đó, tôi có thể tiếp tục sử dụng dfđể thu hẹp theo thư mục con cho đến khi tìm ra thủ phạm.
+
+Hiểu được sự khác biệt trong các lệnh này cho phép chúng tôi sử dụng song song các công cụ này để nhanh chóng xác định và giải quyết phần lớn các vấn đề về dung lượng mà chúng tôi gặp phải với tư cách là quản trị viên hệ thống. 
+
