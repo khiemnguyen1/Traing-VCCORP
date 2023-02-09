@@ -1,0 +1,93 @@
+Để sử dụng được ổ cứng expand thì cần phải tạo partition và tạo file hệ thống trên partition đó.
+Ở bài này sẽ nói về các loại file hệ thống có thể dùng trên Linux cũng như cách tạo file hệ thống trên partition.
+
+1. Các loại file hệ thống
+
+File hệ thống là 1 cơ chế dùng để quản lý các thuộc tính data như file name, created date, updated date…trên thiết bị lưu trữ, chẳng hạn như ổ cứng và quản lý bản thân data file đó, tuỳ theo OS mà các file hệ thống được sử dụng sẽ khác nhau.
+Trường hợp Linux thì tuỳ theo các bản phân phối khác nhau mà file hệ thống sẽ khác nhau nhưng ext3, ext4 thì thường được sử dụng nhiều.
+
+Các file hệ thống được sử dụng trên Linux
+Filename        Maximum file size        Description
+ext2                 2TB                                  Là file hệ thống được sử dụng phổ biến ở hệ điều hành Linux và được mở rộng từ file hệ thống ext.
+ext3                 16GB～2TB                     Là ext2 được thêm vào chức năng hệ thống journaling. Ở Linux thì đây là phần chính của file hệ thống. Sớm có thể nhận biết khoảng thời gian từ 12/14/1901 đến 1/18/2038
+ext4                 16TB                                 Hỗ trợ max volume size là 1EB và max file size là 16TB. Hỗ trợ date range từ 12/14/1901 đến 4/24/2514, trong thời gian system run có thể dùng.
+Timestamp được support đến nanosecond, có thể sau này phần chính của file hệ thống sẽ reponse tốt hơn so với ext3.
+ReiserFS         16TB                                 Chức năng journaling file hệ thống để handle các file nhỏ. Có thể là sẽ dùng được với SUSE.
+Ngoài ra còn 1 số loại file khác nhưng phần chính có lẽ nằm ở top bảng thông tin.
+
+2. Khởi tạo file hệ thống
+Dùng lênh mkfs để tạo file hệ thống
+
+Format
+mkfs [option] Device name (partition)
+1 số option thường dùng
+-t Chỉ định type cho file hệ thống. Nếu không chỉ định type thì mặc định sẽ dùng là ext2
+-c Trước khi tạo file hệ thống thì sẽ tiến hành check bad block.
+
+Chúng ta sẽ thử 1 số sample tạo file hệ thống
+
+# mkfs -t ext4 /dev/sdb1
+↑　File hệ thống là ext4。Format partition /dev/sdb1
+mke2fs 1.41.12 (17-May-2010)
+Filesystem label=
+OS type: Linux
+Block size=4096 (log=2)
+Fragment size=4096 (log=2)
+Stride=0 blocks, Stripe width=0 blocks
+66384 inodes, 265064 blocks
+13253 blocks (5.00%) reserved for the super user
+First data block=0
+Maximum filesystem blocks=272629760
+9 block groups
+32768 blocks per group, 32768 fragments per group
+7376 inodes per group
+Superblock backups stored on blocks:
+32768, 98304, 163840, 229376
+
+Writing inode tables: done
+Creating journal (8192 blocks): done
+Writing superblocks and filesystem accounting information: done
+
+This filesystem will be automatically checked every 21 mounts or
+180 days, whichever comes first. Use tune2fs -c or -i to override.
+
+***Notes
+
+mkfs chỉ là front-end program. Thực tế sẽ run những lệnh sau (mkfs.ext2、mkfs.ext3、mkfs.ext4) nên có thể tạo file hệ thống bằng cách run trực tiếp các command này.
+
+# ls -l /sbin/mkfs*
+-rwxr-xr-x. 1 root root 7416 4月 29 16:41 2013 /sbin/mkfs
+-rwxr-xr-x. 1 root root 22476 4月 29 16:41 2013 /sbin/mkfs.cramfs
+-rwxr-xr-x. 5 root root 61072 6月 25 17:49 2013 /sbin/mkfs.ext2　← ext2用mkfs
+-rwxr-xr-x. 5 root root 61072 6月 25 17:49 2013 /sbin/mkfs.ext3　← ext3用mkfs
+-rwxr-xr-x. 5 root root 61072 6月 25 17:49 2013 /sbin/mkfs.ext4　← ext4用mkfs
+-rwxr-xr-x. 5 root root 61072 6月 25 17:49 2013 /sbin/mkfs.ext4dev
+lrwxrwxrwx. 1 root root 7 8月 3 16:02 2013 /sbin/mkfs.msdos -> mkdosfs
+lrwxrwxrwx. 1 root root 7 8月 3 16:02 2013 /sbin/mkfs.vfat -> mkdosfs
+
+Cách dùng cũng đơn giản, chỉ cần chỉ định partition sau command là được.
+
+# mkfs.ext4 /dev/sdb1　← chỉ định tên thiết bị của partition cho command
+mke2fs 1.41.12 (17-May-2010)
+Filesystem label=
+OS type: Linux
+Block size=4096 (log=2)
+Fragment size=4096 (log=2)
+Stride=0 blocks, Stripe width=0 blocks
+66384 inodes, 265064 blocks
+13253 blocks (5.00%) reserved for the super user
+First data block=0
+Maximum filesystem blocks=272629760
+9 block groups
+32768 blocks per group, 32768 fragments per group
+7376 inodes per group
+Superblock backups stored on blocks:
+32768, 98304, 163840, 229376
+
+Writing inode tables: done
+Creating journal (8192 blocks): done
+Writing superblocks and filesystem accounting information: done
+
+This filesystem will be automatically checked every 25 mounts or
+180 days, whichever comes first. Use tune2fs -c or -i to override.
+
