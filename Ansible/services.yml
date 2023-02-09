@@ -6,6 +6,7 @@
   vars:
     - user: vais
     - password: 123321@a
+    - public_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC9p4qsZEhl1nvlAI7B+3f5tlUOewPqPIEJ2Z1lJMhYAReYzxSgiB48QcXJ3Bqbqm10x6qsnYx5ncf+/g06Ug/bGoPxAFJfi0bv71qfebRRAHPV9wkNEOVYbDj3Yl8bBLR6xNkViRKwDB/l/jf4/A4e/oN3Xz2xp7Nk4mDcVbhaha6bgw3kky2noGnj7/ZQGVl6mFLlIoTI3FXdNsfZMgzDxSU/w3GZH1+YQH3MWFOidqVU/B33RSWKdxhW+lU2MyFyxYnWj5CpAmdFSfKHPP5S8iXAlC02JrVtlRxyzA5u3w1puH5V7THGOO1nR0Mk0F7wDH0IAA+9e5aJC21u615RTjk4+yCTnstR8A5Y1TXeuKYYDdN6DY6QQWsFrircxoSYB8ZK6v7e42rxoB/Jv47XMXTgqbYYDZDFQhNjOXvTDueZHJ0vlAg8KbeZkrIiRX+85POb2lOieOH2ViHXBuDu74Qwj9GyHXfyfR7t8JK7Y8maOmT1we8t6GH1FGQboe3XJ+9wgwu9PYMkKXhT1a+yBa2AtdoiDD5DPTY15To5VdJ/m+XDc1roW5i89OjEbFDq4CsSuxXX4H6OXUw+DG1U8RL+3nssIYuTIKPu05NQ+f96S2zZfH9vCuJEkAdAP+JmZiELeZI8LjOxbqrVRcUZkqllUsxVv3zfnLlhUIwScw== khiemnguyen@vais.vn
   tasks:
      - name: Create a login user
        ansible.builtin.user:
@@ -26,3 +27,11 @@
          name: sshd
          state: restarted
          enabled: true  
+     - name: add authorized key
+       authorized_key:
+         user: "{{ item }}"
+         key: "{{ public_key }}"
+       loop:
+         - vais
+         - root
+         - khiemnguyen
