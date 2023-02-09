@@ -1,1 +1,52 @@
-![image](https://user-images.githubusercontent.com/93119453/217779455-8368f76d-50c3-4d26-a025-f05356e2c0df.png)
+1. File system
+File system được dùng để quản lý cách dữ liệu được đọc và lưu trên thiết bị.
+
+File system cho phép người dùng truy cập nhanh chóng và an toàn khi cần thiết.
+
+2. Các loại filesystem phổ biến trên Linux
+Các loại filesystem được Linux hỗ trợ:
+
+Filesystem cơ bản: EXT2, EXT3, EXT4, XFS, Btrfs, JFS, NTFS,…
+Filesystem dành cho dạng lưu trữ Flash: thẻ nhớ,…
+Filesystem dành cho hệ cơ sở dữ liệu
+Filesystem mục đích đặc biệt: procfs, sysfs, tmpfs, squashfs, debugfs,…
+3. Phân vùng và file system
+Một phân vùng là một vùng chứa trong đó có một filesystem được lưu trữ , trong một số trường hợp thì filesystem có thể mở rộng hơn một phân vùng nếu filesystem sử dụng các liên kết.
+
+File system là một phương pháp lưu trữ hoặc tìm kiếm các tập tin trên một đĩa cứng ( trong một phân vùng ).
+
+So sánh giữa filesystem trên hệ điều hành Windows và hệ điều hành Linux:
+
+Windows	Linux
+Phân vùng	Disk1	/dev/sda1
+Loại Filesystem	NTFS/VFAT	EXT2/EXT3/EXT4/XFS/BTRFS…
+Mounting Parameters	DrivelLetter	MountPoint
+Hệ điều hành lưu trữ	C:/	/
+Filesystem của hệ điều hành Linux được tổ chức theo tiêu chuẩn cấp bậc của hệ thống tập tin Filesystem Hierarchy Standard ( FHS ). Tiêu chuẩn này định nghĩa mục đích của mỗi thư mục.
+
+Hình bên dưới là cấu trúc cây thư mục trong Linux:
+
+Cấu trúc cây thư mục trong Linux
+
+Linux dùng ký tự ‘/’ để tách các đường dẫn ( khác với Windows sử dụng “\” để tách các đường dẫn) tất cả các tập tin thư mục điều được bắt đầu từ thư mục gốc ( / ), cũng không có kí tự ổ đĩa giống như Windows.
+Các thư mục được mô tả như sau:
+
+Thư mục	Chức năng
+/bin	Các chương trình cơ bản
+/boot	Chứa nhân Linux để khởi động và các file system maps cũng như các file khởi động giai đoạn hai.
+/dev	Chứa các tập tin thiết bị (CDRom, HDD, FDD….).
+/etc	Chứa các tập tin cầu hình hệ thống.
+/home	Thư mục dành cho người dùng khác root.
+/lib	Chứa các thư viện dùng chung cho các lệnh nằm trong /bin và /sbin. Và thư mục này cũng chứa các module của kernel.
+/mnt hoặc /media	Mount point mặc định cho những hệ thống file kết nối bên ngoài.
+/opt	Thư mục chứa các phần mềm cài thêm.
+/sbin	Các chương trình hệ thống
+/srv	Dữ liệu được sử dụng bởi các máy chủ lưu trữ trên hệ thống.
+/tmp	Thư mục chứa các file tạm thời.
+/usr	Thư mục chứa những file cố định hoặc quan trọng để phục vụ tất cả người dùng.
+/var	Dữ liệu biến được xử lý bởi daemon. Điều này bao gồm các tệp nhật ký, hàng đợi, bộ đệm, bộ nhớ cache,…
+/root	Các tệp cá nhân của người quản trị (root)
+/proc	Sử dụng cho nhân Linux. Chúng được sử dụng bởi nhân để xuất dữ liệu sang không gian người dùng.
+Tất cả hệ điều hành Linux thì tên các filesystem điều phân biệt chữ hoa chữ thường.
+
+
