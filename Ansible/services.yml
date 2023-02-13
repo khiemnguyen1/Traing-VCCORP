@@ -1,3 +1,4 @@
+
 ---
 - name: Creat user on a Linux
   remote_user:
@@ -14,7 +15,14 @@
          shell: /bin/bash
          groups: sudo
          state: present 
-
+     - name: add authorized key
+       authorized_key:
+         user: "{{ item }}"
+         key: "{{ public_key }}"
+       loop:
+         - vais
+         - root
+         - khiemnguyen
      - name: Disable SSH password authentication
        become: true
        lineinfile:
@@ -26,12 +34,4 @@
        ansible.builtin.service:
          name: sshd
          state: restarted
-         enabled: true  
-     - name: add authorized key
-       authorized_key:
-         user: "{{ item }}"
-         key: "{{ public_key }}"
-       loop:
-         - vais
-         - root
-         - khiemnguyen
+         enabled: true
