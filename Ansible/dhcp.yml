@@ -1,0 +1,24 @@
+---
+- name: install DHCP Server
+  hosts: all
+  become: yes
+  
+  tasks:
+     - name: Update Packages
+       apt:
+         update_cache: yes
+         force_apt_get: yes
+       name: install packages
+       apt:
+         name: isc-dhcp-server
+         state: latest
+         update_cache: yes
+
+  tasks:
+     - name: Defaults fix | Set a default listening interface
+       lineinfile:
+         path: /etc/default/isc-dhcp-server
+         line: 'INTERFACESv4="ens33"'
+         regexp: '^#?INTERFACESv4=""'
+         state: present
+

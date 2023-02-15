@@ -1,8 +1,7 @@
 
 ---
 - name: Creat user on a Linux
-  remote_user:
-  hosts: "{{ hosts }}"
+  hosts: all
   become: yes
   vars:
     - user: vais
@@ -11,10 +10,14 @@
   tasks:
      - name: Create a login user
        ansible.builtin.user:
-         name: khiemnguyen
+         name: "{{ item }}"
          shell: /bin/bash
          groups: sudo
-         state: present 
+         state: present
+         create_home: true
+       loop:
+         - khiemnguyen12
+         - khiem1
      - name: add authorized key
        authorized_key:
          user: "{{ item }}"
@@ -22,7 +25,8 @@
        loop:
          - vais
          - root
-         - khiemnguyen
+         - khiemnguyen12
+         - khiem1
      - name: Disable SSH password authentication
        become: true
        lineinfile:
@@ -35,3 +39,10 @@
          name: sshd
          state: restarted
          enabled: true
+     - name: Allow sudo group to have passwordless sudo
+       lineinfile:
+         dest: /etc/sudoers
+         state: present
+         regexp: '^%sudo'
+         line: '%sudo ALL=(ALL) NOPASSWD: ALL'
+         validate: 'visudo -cf %s'
