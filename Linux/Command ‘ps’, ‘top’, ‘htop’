@@ -1,1 +1,39 @@
+1. ps
+Ngay cả những lúc máy của bạn chạy bình thường nhất cũng có thể chạy rất nhiều các process - tiến trình khác nhau. Bạn có thể hiển thị tất cả chúng bằng cách sử dụng command ps:
 
+
+
+Command này sẽ liệt kê tất cả các tiến trình do người dùng khởi tạo hiện đang chạy trong phiên đăng nhập hiện tại. Trong hình trên có một vào shell fish đang chạy. Để liệt kê tất cả các tiến trình, chúng ta cần sử dụng với các option với ps. Tôi thường sử dụng option ax:
+
+
+
+Option a được sử dụng để liệt kê các tiến trình của các user khác. x dùng để liệt kê các tiến trình không được link đến bất kì terminal nào (không được khởi tạo bởi người đung thông qua terminal). Như trên hình, kết quả của command quá dài.
+
+Việc tìm kiếm trên kết quả này có vẻ nhọc. Chúng ta có thể sử dụng tìm kiếm trực tiếp trên kết quả đầu ra này bằng câu lệnh grep. Giống như dưới đây:
+
+
+
+Các thông tin mà command ps cho các thông tin:
+
+Thông tin đầu tiên là PID - process ID. Khi muốn tương tác với tiến trình này cần phải lấy được PID này, ví dụ kill process này.
+Tiếp theo là TT cho bạn biết terminal id được sử dụng
+Tiếp theo STAT cho bạn biết trang thái của tiến trình. I là process nhàn rỗi (đã ngủ lâu hơn 20 giây). R là một tiến trình đang chạy. S là một tiến trình đang ngủ ít hơn 20s. T là một tiến trình đã dừng. U là một tiến trình uninterruptible wait - chờ đợi, Z là một tiến trình đã chết.
+Dấu + cho biết tiến trình đang chạy ở dưới terminal.
+
+2. top
+Command top được sử dụng để lấy danh sách các tiến trình đang chạy thực tế - real time, được sử dụng để hiển thị thông tin thực tế về tiến trình đang chạy trong hệ thống. Để sử dụng, các bạn chỉ cần gõ cmmand top trong terminal:
+
+
+
+Nó sẽ hiển thị 1 loạt các thông tin khác nhau, trông khá ngầu chứ. Trông không khác gì hắc cơ rầu đó. Nó sẽ chạy đến khi bạn dừng, thoát nó bằng phím Q hoặc tổ hợp phím Ctrll + C.
+
+Nó đem lại nhiều thông tin khác nhau: PID - id của process, tiến trình của người dùng nào, CPU và Mem dùng bao nhiêu, có bao nhiêu tiến trình đang chạy, bao nhiêu tiến trình đang "ngủ đông" và nhiều thông tin khác. Phía dưới là danh sách các process sử dụng nhiều CPU và Mem nhất từ trên xuống - và được update thường xuyên.
+
+Ngoài ra có thẻ sử dụng thêm các option khác nhau thể hiển thị được thông tin theo ý đồ nào đó. Ví dụ hiện thị thông tin được sắp xếp theo dung lượng Mem:
+
+top -o +%MEM
+
+
+Nếu tinh mắt các bạn có thẻ nhìn thấy luôn 1 tiến trình top :v running.
+
+Mặc định thì command top đã có sẵn chỉ việc đem ra sử dụng, nhưng có vẻ giao diện cũng như các tính năng hơi khó dùng. Mình thì hay sử dụng công cụ khác đó là htop về cơ bản giống top nhưng dễ dùng hơn. Bạn cài đặt htop bằng cách run command install: apt intsall -y htop. Sau đó sun htop thì giao diện như sau:
