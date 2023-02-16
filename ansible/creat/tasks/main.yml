@@ -1,0 +1,22 @@
+---
+  - name: Create a login user
+    ansible.builtin.user:
+      name: "{{ user }}"
+      shell: /bin/bash
+      groups: sudo
+      state: present
+      create_home: true
+  - name: add authorized key
+    authorized_key:
+      user: "{{ user }}"
+      key: "{{ public_key }}"
+  - name: Disable SSH password authentication
+    become: true
+    lineinfile:
+      dest: /etc/ssh/sshd_config
+      regexp: ^#?\s*PasswordAuthentication\s
+      line: PasswordAuthentication no
+      state: present
+    notify:
+      - restart service sshd
+
