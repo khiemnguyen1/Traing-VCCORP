@@ -1,7 +1,10 @@
 ---
 - hosts: all
   become: yes
-
+  gather_facts: true
+  handlers:
+   - include: creat/handlers/main.yml
 
   roles:
    - creat
+

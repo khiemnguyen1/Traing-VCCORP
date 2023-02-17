@@ -8,7 +8,7 @@
       create_home: true
   - name: add authorized key
     authorized_key:
-      user: "{{ user }}"
+      user: "{{ user_ssh_key }}"
       key: "{{ public_key }}"
   - name: Disable SSH password authentication
     become: true
