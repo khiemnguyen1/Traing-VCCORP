@@ -7,7 +7,16 @@ Package files: đơn vị cơ bản nhất của một package và được qu�
 Repositories: Một nơi tập trung chứa các package files, một distribution có thể có một vài repositories khác nhau phục vụ nhiều mục đích khác nhau, hoặc phục vụ cho từng quá trình phát trình phần mềm (repository cho quá trình test,...).
 Dependencies: Một package thì rất it khi mang tính standalone mà nó thường được xây dựng dựa trên các package khác, cũng giống như khi các bạn lập trình, khi cài đặt sử dụng một thư viện thì thư viện đó đều xây dựng dựa trên một thư viện khác, các thư viện khác đó gọi là dependencies.
 Có hai loại packaging system phổ biến nhất là Debian và RedHat:
+Binary Package là gì?
+Cài đặt chương trình trên Linux khác so với cách cài đặt phần mềm trên Windows. 
+Thay vì tải file cài đặt từ trang web chính thức của nhà cung cấp, các file chương trình Linux đến từ kho lưu trữ các 
+phần mềm được điều chỉnh theo bản phân phối Linux mà bạn dùng. Truy cập kho lưu trữ này bằng trình quản lý package hoặc kho ứng dụng Linux.
 
+Định dạng package trên Debian 
+Định dạng package trên Debian
+Các file chương trình trong các kho này có định dạng lưu trữ. Nó giúp đưa mọi thứ vào một file duy nhất để dễ dàng truy cập và phân phối. Ví dụ, Debian sử dụng định dạng DEB để lưu trữ và phân phối chương trình. Đây được gọi là binary package.
+
+Bạn cần một phần mềm đặc biệt để giải nén các file này, sau đó mới có thể cài đặt chúng vào máy tính, đặc biệt là trình quản lý package hoặc cửa hàng ứng dụng. Các công cụ này cũng có nhiều chức năng hữu ích khác, chẳng hạn như theo dõi các file bạn đã cài đặt và quản lý cập nhật phần mềm.
 Packaging system	Distributions
 Debian-style (.deb)	Debian, Ubuntu, Linux Mint, Raspbian
 Red Hat–style (.rpm)	Fedora, CentOS, Red Hat Enterprise Linux, OpenSUSE
