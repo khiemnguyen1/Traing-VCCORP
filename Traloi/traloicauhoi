@@ -1,0 +1,96 @@
+Câu 1: Thêm biến và hệ thống
+
+- có 2 loại biến:
++ 1 là biến shell: Các biến shell là các biến chỉ áp dụng cho session shell hiện tại. Mỗi shell như zsh và bash, có tập hợp các biến shell bên trong riêng
+Có cấu trúc KEY=”Value”
++ 2 là biến môi trường: Biến môi trường là các biến có sẵn trên toàn hệ thống và được kế thừa bởi tất cả các tiến trình và shell được sinh ra
+
+- printenv: lệnh in các biến môi trường 
+
+- cách để tạo ra biến shell: KEY=”Value”
+- chuyển biến shell vào biến môi trường: export KEY
+- Cách xóa biến shell hoặc biến môi trường: ta dùng unset
+
+Câu 2: Thay thế trong VIM
+
+Tìm kiếm và thay thế
+Tìm kiếm và thay thế, đây là tính năng cần thiết trong quá trình soạn thảo mà bất cứ trình soạn thảo nào cũng cần hỗ trợ. Dưới đây là phím tắt để tìm kiếm và thay thế trong vim
+:s/<old>/<new>/: thay thế old bằng new ở ký tự đâuf tiên
+:s/<old>/<new>/g: thay old bằng new trong toàn bộ văn bản 
+
+Câu 3: < là gì 
+
+< chuyển hướng input file 
+<< Chỉ gửi những dòng khai báo ra màn hình input
+
+Câu 4: Sed, awk là gì
+
+sed command:
+- Dùng để xử lý, edit văn bản ( thêm, sửa, xóa, thay thế,,, ) mà không phải trực tiếp mở file văn bản đó
+Ví dụ: dùng sed để thay thế từ trong văn bản
+sed ‘s/abc/bcd/g’ abc.txt
+trong đó: /g là toàn bộ các từ abc có trong văn bản 
+                abc/bcd: thay toàn bộ từ abc thành bcd trong văn bản
+               s/: là để thay thế văn bản
+
+awk: là ngôn ngữ lập trình, dùng các hàm, chuỗi, và toán tử logic để tìm kiếm, lọc tài liệu 
+ ví dụ: Dùng awk để lọc các PID của 1 process nào đó 
+ ps -aux | grep -i firefox | awk ‘{print $2}’ 
+ trong đó: ps -aux là trả về process dưới dạng BSD. 
+                grep -i firefox: lọc các process chứa từ firefox 
+                 awk: lọc và in cột thứ 2 ra màn hình
+
+Câu 5: Load avenger là gì?
+- Load avenger là tải trung bình của 1 hệ thống
+với hệ thống có 1 CPU:
+- Load avenger bằng 1 nghĩa là hệ thống đang hoạt động 100%, nhưng với 1 cpu nhưng 2 luồng xử lý thì LA=1 nghĩa là hệ thống đang hoạt động 50%
+- LA<1 nghĩa là hệ thống đang hoạt động trơn tru, không có vấn đề
+- LA >1 (1.x trở lên)nghĩa là hệ thống đang hoạt động 100% và có trên 1 process đang chờ để được hoạt động.
+
+Câu 6: Trường S trong htop là gì
+
+Trường S trong htop là để biểu thị trạng thái của process đó 
+- S là sleep
+- R là runing
+- Z là zombie
+
+Câu 7:  ps -aux, các thành phần a u x mang ý nghĩa gì
+
+ps: là lệnh hiển thị process status trong linux 
+-a: liệt kê tất cả các tiến trình đang được chạy trên terminal hiện tại, của tất cả các user
+- u: user
+- liệt kê tất cả các tiến trình đang chạy mà terminal không kiểm soát, hoặc là được chạy ngầm
+
+Câu 8: Phân quyền file trong linux
+
+Trong linux, có 2 khái niệm cần nhớ: permissions và ownership
+
+- ownership: là mỗi file hay thư mục trong linux đều được quản lý bởi 3 đối tượng:
+user, group, other
+
++ user: là người tạo thư mục hay file đó
++ group: 1 group có thể chứa nhiều user, nếu bạn muốn nhiều user cùng được truy cập hay thực thi 1 file, 1 folder, bạn có thể add nhiều user vào 1 group và phân quyền group đó
++ other: là tất cả các user, group không thuộc 2 trường trên
+
+- Permission: Mỗi file hay thư mục trong linux đều có 3 quyền: đọc, ghi, thực thi
+
+lần lượt là rwx:
+r =4
+w=2
+x=1 
+
+Câu 9: rotedlog là gì
+
+- Thay vì để nhật ký tự động lưu mãi mãi tại var/log. ta sử dung logrotate để có thể thay đổi tên, nén nhật kí, và xóa các nhật kí cũ và giữ lại những tệp gần đây.
+
+
+Câu 10: ý nghĩa các thông số trong cấu hình ip tĩnh
+
+- eno1: port vật lý chọn để cấu hình tĩnh
+- ip/24: địa chỉ ipv4 của máy tính và subnet mask của ip đó ( snmask để định nghĩa xem ip đang nằm ở lớp nào)
+- Gateway4: địa chỉ gateway, gateway là địa chỉ ip, là địa chỉ định tuyến các các gói tin, điều hướng các gói tin đi đúng hướng, dùng để giao tiếp giữa 2 network khác nhau.
+- nameservers: là nơi cấu hình dns, điều này thực sự cần thiết. Vì khi có dns thì hệ thống mới biết nơi để phân giải tên miền ra ip, nên khi ta gõ google.com, hệ thống không biết tìm ip của google ở đâu. dẫn tới việc không truy cập internet qua domain được.
+còn nếu ta cấu hình động thì sẽ có auto dns
+
+
+
