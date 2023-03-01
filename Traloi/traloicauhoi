@@ -82,6 +82,41 @@ x=1
 Câu 9: rotedlog là gì
 
 - Thay vì để nhật ký tự động lưu mãi mãi tại var/log. ta sử dung logrotate để có thể thay đổi tên, nén nhật kí, và xóa các nhật kí cũ và giữ lại những tệp gần đây.
+Cấu hình để rotatelog syslog: Ta sửa file /etc/logrotate.conf hoặc thêm riêng vào folder /etc/logrotate.d
+
+sudo nano /etc/logrotate.conf
+root@adminn-B365-M-AORUS-ELITE:/home/adminn/Khiem/Traing-VCCORP# cat /etc/logrotate.conf 
+# see "man logrotate" for details
+# rotate log files weekly : là rotate file logs trong bao lâu, 1 ngày 1 tuần 1 tháng
+weekly
+
+# use the adm group by default, since this is the owning group
+# of /var/log/syslog. : sử dụng group adm làm mặc định, vì đây là nhóm sở hữu syslog
+su root adm
+
+# keep 4 weeks worth of backlogs : giữ file logs trong bao lâu ( ở đây là 4 tuần )
+rotate 4 
+
+# create new (empty) log files after rotating old ones ( tạo 1 file log rỗng mới sau khi thực hiện rotate log cũ
+create
+
+# use date as a suffix of the rotated file
+#dateext
+
+# uncomment this if you want your log files compressed
+#compress
+
+# packages drop log rotation information into this directory
+include /etc/logrotate.d
+
+# system-specific logs may be also be configured here.
+/var/log/syslog {
+        daily
+        rotate 4
+        size 10MB
+        compress
+ }
+Đoạn code trên sẽ rotate file syslog của hệ thống 
 
 
 Câu 10: ý nghĩa các thông số trong cấu hình ip tĩnh
