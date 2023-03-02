@@ -50,9 +50,9 @@ với hệ thống có 1 CPU:
 Câu 6: Trường S trong htop là gì
 
 Trường S trong htop là để biểu thị trạng thái của process đó 
-- S là sleep
-- R là runing
-- Z là zombie
+- S là sleep: Tiến trình ngủ, vì tiến trình đang còn chờ 1 số tài nguyên nhất đinhj để chuyển sang R ( running )
+- R là runing: Quá trình đang thực thi và sử dụng CPU tại một thời điểm cụ thể được gọi là một quá trình đang chạy
+- Z là zombie: Quá trình được sinh ra khi 1 tỉến trình cha/mẹ không diệt tiến trình con trước. 
 
 Câu 7:  ps -aux, các thành phần a u x mang ý nghĩa gì
 
