@@ -15,8 +15,8 @@ Câu 2: Thay thế trong VIM
 
 Tìm kiếm và thay thế
 Tìm kiếm và thay thế, đây là tính năng cần thiết trong quá trình soạn thảo mà bất cứ trình soạn thảo nào cũng cần hỗ trợ. Dưới đây là phím tắt để tìm kiếm và thay thế trong vim
-:s/<old>/<new>/: thay thế old bằng new ở ký tự đâuf tiên
-:s/<old>/<new>/g: thay old bằng new trong toàn bộ văn bản 
+:%s/<old>/<new>/: thay thế old bằng new ở ký tự đâuf tiên
+:%s/<old>/<new>/g: thay old bằng new trong toàn bộ văn bản 
 
 Câu 3: < là gì 
 
