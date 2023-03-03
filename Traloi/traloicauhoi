@@ -41,9 +41,9 @@ awk: là ngôn ngữ lập trình, dùng các hàm, chuỗi, và toán tử logi
                  awk: lọc và in cột thứ 2 ra màn hình
 
 Câu 5: Load avenger là gì?
-- Load avenger là tải trung bình của 1 hệ thống
-với hệ thống có 1 CPU:
-- Load avenger bằng 1 nghĩa là hệ thống đang hoạt động 100%, nhưng với 1 cpu nhưng 2 luồng xử lý thì LA=1 nghĩa là hệ thống đang hoạt động 50%
+- Load avenger thể hiện tải trung bình của hệ thống qua mỗi đoạn thời gian: cho thấy trung bình có bao nhiều process mà server phải thực hiện
++ với hệ thống có 1 CPU:
+- Load avenger bằng 1 nghĩa là hệ thống đang hoạt động 100% 
 - LA<1 nghĩa là hệ thống đang hoạt động trơn tru, không có vấn đề
 - LA >1 (1.x trở lên)nghĩa là hệ thống đang hoạt động 100% và có trên 1 process đang chờ để được hoạt động.
 
