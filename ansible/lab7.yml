@@ -1,6 +1,6 @@
 ---
 - name: Set up lab7 
-  hosts: 192.168.18.110
+  hosts: 192.168.18.97
   gather_facts: true
   user: vais
   become: true
