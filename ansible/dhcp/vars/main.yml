@@ -1,0 +1,16 @@
+---
+# vars file for dhcp
+
+#Ip network
+ip_network: 192.168.18.0
+#IP start range
+ip_first: 192.168.18.100
+#IP stop range
+ip_last: 192.168.18.200
+#gateway
+gateway: 192.168.18.1
+# Ip broadcast
+ip_broadcast: 192.168.18.255
+#port
+
+port: ens33

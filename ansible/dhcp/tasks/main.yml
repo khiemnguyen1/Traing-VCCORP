@@ -1,0 +1,24 @@
+---
+# tasks file for dhcp
+- name: Install DHCP
+  package:
+    name: isc-dhcp-server
+    state: present
+    update_cache: yes
+
+- name: Defaults fix | set adefault listening intf
+  lineinfile:
+    path: /etc/default/isc-dhcp-server
+    line: 'INTERFACESv4="{{ port }}"'
+    regexp: '^#?INTERFACESv4=""'
+    state: present
+
+- name: Config DHCP Server
+  template:
+    src: dhcp.conf.j2
+    dest: /etc/dhcp/dhcpd.conf
+    owner: root
+    group: root
+  notify: restart DHCP
+
+

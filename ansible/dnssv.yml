@@ -1,0 +1,10 @@
+---
+- name: Set up lab7 
+  hosts: 192.168.18.110
+  gather_facts: true
+  user: vais
+  become: true
+  handlers:
+    - include: dhcp/handlers/main.yml
+  roles:
+    - dhcp  

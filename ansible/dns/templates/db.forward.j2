@@ -1,0 +1,17 @@
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     {{ sub_domain }}. root.{{ domain }}. (
+                             2             ; Serial
+                        604800             ; Refresh
+                         86400             ; Retry
+                       2419200             ; Expire
+                        604800 )           ; Negative Cache TTl  
+
+;Name Server Information
+@                      IN      NS          {{ sub_domain }}.
+;IP address of Name Server
+{{ sub }}              IN      A	   {{ ipv4 }}
+
+@                      IN      A           {{ ip_resolver }}

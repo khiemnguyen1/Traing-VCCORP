@@ -1,0 +1,16 @@
+---
+# vars file for Bind setup
+# Domain for Server
+domain: test1.com
+# reverse-written Domain
+rev_domain: 18.168.192
+# IPv4 for Server DNS
+ipv4: 192.168.18.110
+# IPv4 for domain 
+ip_resolver: 1.2.3.4
+# Full name Domain
+sub_domain: ns1.test1.com
+# last ipv4
+last_ip: 110
+#first name domain
+sub: ns1
