@@ -7,4 +7,5 @@
   handlers:
     - include: dhcp/handlers/main.yml
   roles:
-    - dhcp  
+    - dhcp
+    - dns
