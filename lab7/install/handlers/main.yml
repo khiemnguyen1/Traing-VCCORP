@@ -1,8 +1,0 @@
----
-# handlers file for install
-- name: restart dhcpd services
-  ansible.builtin.service:
-    name: isc-dhcp-server
-    state: restarted
-    enabled: true
-
