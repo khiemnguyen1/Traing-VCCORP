@@ -1,0 +1,31 @@
+Câu 1: Sự khác nhau giữa available và free trong câu lêhh free -h
+- free là dung lượng bộ nhớ hiện không được sử dụng cho bất kỳ thứ gì. Con số này phải nhỏ, vì bộ nhớ không được sử dụng sẽ bị lãng phí.
+- available là dung lượng bộ nhớ khả dụng để phân bổ cho một quy trình mới hoặc cho các quy trình hiện có.
+
+Câu 2: Các trạng thái của process
+
+Câu 3: Apt update được lưu ở đâu?
+Câu trả lơi là /var/cache/apt/archives và /var/lib/apt/lists
+
+câu 4: câu hình fstab trên server
+có 6 cột cần đuọc câu hình
++ Cột 1: Cấu hinh phân vùng sẽ mount
++ Cột 2: Cấu hình vị trí, thư mục sẽ được mount
++ Cột 3: Cấu hình file system ( etx4, ext3, nfs, ...)
++ Cột 4: Cấu hình rule cho mount:
+   Nếu có nhiều tùy chọn thì chúng được phân cách bởi dấu phẩy. Dưới đây là 1 số tùy chọn đáng chú ý:
+
+- auto: tự động mount thiết bị khi máy tính khởi động.
+- noauto: không tự động mount, nếu muốn sử dụng thiết bị thì sau khi khởi động vào hệ thống bạn cần chạy lệnh mount.
+- user: cho phép người dùng thông thường được quyền mount.
+- nouser: chỉ có người dùng root mới có quyền mount.
+- exec: cho phép chạy các file nhị phân (binary) trên thiết bị.
+- noexec: không cho phép chạy các file binary trên thiết bị.
+- ro (read-only): chỉ cho phép quyền đọc trên thiết bị.
+- rw (read-write): cho phép quyền đọc/ghi trên thiết bị.
+- sync: thao tác nhập xuất (I/O) trên filesystem được đồng bộ hóa.
+- async: thao tác nhập xuất (I/O) trên filesystem diễn ra không đồng bộ.
+- defaults: tương đương với tập các tùy chọn rw, suid, dev, exec, auto, nouser, async
+Thông thương ta sẽ cấu hình defaults
++ Cột 5: tùy chọn dump file dữ liệu: 0 là không 1 là có
++ cột 6: tùy chọn dò lỗi trên file system bằng fsck: 0 là không 1 là có
