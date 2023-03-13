@@ -23,10 +23,15 @@ A: Bản ghi này rất quan trọng. Đây là bản ghi dùng để ánh xạ 
 [domain_name] A [IP_ADDRESS]
 VD:
 
-AAAA bản ghi này tương tự A nhưng dùng cho IPv6. CNAME cho phép tạo bí danh cho tên miền, một tên miền có thể có nhiều bí danh (alias) . Để sử dụng bản ghi này cần khai báo bản ghi A. VD: www CNAME goole.com mail CNAME goole.com example.com A 103.101.161.201 PTR: Chuyển đổi ngược từ IPv4 hoặc IPv6 sang tên miền. VD: 90.163.101.103.in-addr.arpa IN PTR google.com. SRV: Là bản ghi đặc biệt dùng để xác định chính xác dịch vụ nào chạy port nào, tại đây có thể thêm Priority, Name, Weight, Port, Points to, TTL. VD:
+AAAA bản ghi này tương tự A nhưng dùng cho IPv6. 
+CNAME cho phép tạo bí danh cho tên miền, một tên miền có thể có nhiều bí danh (alias) . Để sử dụng bản ghi này cần khai báo bản ghi A. 
+VD: www CNAME goole.com mail CNAME goole.com example.com A 103.101.161.201 
+PTR: Chuyển đổi ngược từ IPv4 hoặc IPv6 sang tên miền. VD: 90.163.101.103.in-addr.arpa IN PTR google.com.
+SRV: Là bản ghi đặc biệt dùng để xác định chính xác dịch vụ nào chạy port nào, tại đây có thể thêm Priority, Name, Weight, Port, Points to, TTL. VD:
 
 ldap._tcp.example.com. 3600  IN  SRV  10  0  389  ldap01.example.com.
-MX : MX record là một bản ghi chỉ định server nào quản lý các dịch vụ email của tên miền đó, có thể trỏ tên miền tới mail server, đặt mức độ ưu tiên (priority), đặt TTL. Cú pháp:
+MX : MX record là một bản ghi chỉ định server nào quản lý các dịch vụ email của tên miền đó, có thể trỏ tên miền tới mail server, đặt mức độ ưu tiên (priority), 
+đặt TTL. Cú pháp:
 
 [domain_name] MX [Priority_number] [subdomain_name]
 VD:
