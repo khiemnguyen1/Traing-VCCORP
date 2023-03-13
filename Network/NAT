@@ -1,6 +1,14 @@
-NAT nguồn thay đổi địa chỉ nguồn trong tiêu đề IP của gói. Nó cũng có thể thay đổi cổng nguồn trong tiêu đề TCP/UDP. Cách sử dụng thông thường là thay đổi địa chỉ/cổng riêng (rfc1918) thành địa chỉ/cổng công cộng cho các gói rời khỏi mạng của bạn.
+NAT nguồn thay đổi địa chỉ nguồn trong tiêu đề IP của gói. 
+Nó cũng có thể thay đổi cổng nguồn trong tiêu đề TCP/UDP. Cách sử dụng thông thường là thay đổi địa chỉ/cổng riêng (rfc1918)
+thành địa chỉ/cổng công cộng cho các gói rời khỏi mạng của bạn.
 
-NAT đích thay đổi địa chỉ đích trong tiêu đề IP của gói. Nó cũng có thể thay đổi cổng đích trong các tiêu đề TCP/UDP. Cách sử dụng điển hình của việc này là chuyển hướng các gói đến với đích là một địa chỉ/cổng công cộng sang một địa chỉ/cổng IP riêng trong mạng của bạn.
+NAT đích thay đổi địa chỉ đích trong tiêu đề IP của gói. 
+Nó cũng có thể thay đổi cổng đích trong các tiêu đề TCP/UDP. Cách sử dụng điển hình của việc này là chuyển hướng các gói đến với 
+đích là một địa chỉ/cổng công cộng sang một địa chỉ/cổng IP riêng trong mạng của bạn.
 
-Masquerading là một dạng NAT nguồn đặc biệt trong đó địa chỉ nguồn không xác định tại thời điểm quy tắc được thêm vào các bảng trong kernel. Nếu bạn muốn cho phép các máy chủ có địa chỉ riêng đằng sau tường lửa của mình truy cập Internet và địa chỉ bên ngoài có thể thay đổi (DHCP) thì đây là thứ bạn cần sử dụng. Giả mạo sẽ sửa đổi địa chỉ IP nguồn và cổng của gói thành địa chỉ IP chính được gán cho giao diện gửi đi. Nếu giao diện gửi đi của bạn có địa chỉ tĩnh, thì bạn không cần sử dụng MASQ và có thể sử dụng SNAT, cách này sẽ nhanh hơn một chút vì không cần phải tìm ra IP bên ngoài mỗi lần.
+Masquerading là một dạng NAT nguồn đặc biệt trong đó địa chỉ nguồn không xác định tại thời điểm quy tắc được thêm vào các bảng trong kernel.
+Nếu bạn muốn cho phép các máy chủ có địa chỉ riêng đằng sau tường lửa của mình truy cập Internet và địa chỉ bên ngoài có thể thay đổi (DHCP) 
+thì đây là thứ bạn cần sử dụng. Giả mạo sẽ sửa đổi địa chỉ IP nguồn và cổng của gói thành địa chỉ IP chính được gán cho giao diện gửi đi.
+Nếu giao diện gửi đi của bạn có địa chỉ tĩnh, thì bạn không cần sử dụng MASQ và có thể sử dụng SNAT, cách này sẽ nhanh hơn một chút vì không cần
+phải tìm ra IP bên ngoài mỗi lần.
 
