@@ -1,0 +1,35 @@
+Cách chia ipv4 
+Bước 1:Ta sẽ tìm các hệ số được quy định là n m
+n là số bit được mượn bởi netID
+m là số bit còn lại của hostID, được tính bằng số hostid - n
+Lớp a = 24
+Lớp b = 16
+lớp c = 8
+Bước 2 Xác dịnh sô host sẽ được sử dụng trong mỗi network
+công thức 2^m-2= số host
+Bước 3: Tìm subnet mới 
+Ta nhớ vay bao nhiêu thì bật bấy nhiêu 1 lên trong subnet
+lớp A 255.0.0.0
+Lớp B 255.255.0.0
+Lớpc C 255.255.255.0
+Được biẻu thị dưií dạng nhị phân là 1111 1111.1111 1111.1111 1111.0000 0000 = lớp C
+
+Bước 4: Xác định bước nhảy của ip 
+Bước nhảy dùng để xác định network tiếp theo 
+B=256-X ( x là số subnet mask mới tìm đuọc )
+
+Ví dụ: chia 192.168.10.0/25 
+
+ta có n = 1
+      m = 7
+Số nhánh có thể chia 2^n=2^1=2 nhánh
+số host trong 1 nhánh 2^m-2 = 2^7 - 2 = 126 host ( 1 host = 1 PC )
+Do phần netid mươnj 1 bit nên subnetmask sẽ là 1111 1111.1111 1111.1111 1111.1000 0000 = 255.255.255.128
+số bước nhảy b=256-X = 256-128 = 128 
+
+
+Network         startIP        EndIP            Broadcast 
+192.160.10.0    192.168.10.1   192.168.10.126   192.168.10.127
+192.168.10.128  192.168.10.129 192.168.10.254   192.168.10.255
+
+
